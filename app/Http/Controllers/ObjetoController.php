@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreObjetoRequest;
-use App\Http\Requests\UpdateObjetoRequest;
 use App\Models\Objeto;
+use Illuminate\Http\Request;
 
 class ObjetoController extends Controller
 {
@@ -22,23 +21,31 @@ class ObjetoController extends Controller
      */
     public function create()
     {
-        //
+        return view('objetos.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreObjetoRequest $request)
+    public function store(Request $request)
     {
-        //
+        $objeto = New Objeto();
+        $objeto->nombre = $request->nombre;
+        $objeto->descripcion = $request->descripcion;
+        $objeto->precio = $request->precio;
+        $objeto->epoca = $request->epoca;
+
+        $objeto->save();
+
+        return redirect()-> route('objetos.index');
     }
 
-    /**
+    /**w
      * Display the specified resource.
      */
     public function show(Objeto $objeto)
     {
-        //
+        return view('objetos.show', ['objeto'=>$objeto]);
     }
 
     /**
@@ -46,15 +53,22 @@ class ObjetoController extends Controller
      */
     public function edit(Objeto $objeto)
     {
-        //
+        return view('objetos.edit', ['objeto'=>$objeto]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateObjetoRequest $request, Objeto $objeto)
+    public function update(Request $request, Objeto $objeto)
     {
-        //
+        $objeto->nombre = $request->nombre;
+        $objeto->descripcion = $request->descripcion;
+        $objeto->precio = $request->precio;
+        $objeto->epoca = $request->epoca;
+
+        $objeto->save();
+
+        return redirect()->route('objetos.index');
     }
 
     /**
@@ -62,6 +76,8 @@ class ObjetoController extends Controller
      */
     public function destroy(Objeto $objeto)
     {
-        //
+        $objeto->delete();
+
+        return redirect()->route('objetos.index');
     }
 }

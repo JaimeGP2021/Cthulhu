@@ -31,12 +31,11 @@ class HechizoController extends Controller
     {
         $hechizo = New Hechizo();
         $hechizo->nombre = $request->nombre;
-        $hechizo->tipo = $request->tipo;
+        $hechizo->tipo1 = $request->tipo1;
+        $hechizo->tipo2 = $request->tipo2;
         $hechizo->efecto = $request->efecto;
         $hechizo->turnos = $request->turnos;
-        $hechizo->coste_mp = $request->coste_mp;
-        $hechizo->coste_cordura = $request->coste_cordura;
-        $hechizo->procedencia = $request->procedencia;
+        $hechizo->coste = $request->coste;
         $hechizo->save();
 
         return redirect()-> route('hechizos.index');
@@ -55,7 +54,7 @@ class HechizoController extends Controller
      */
     public function edit(Hechizo $hechizo)
     {
-        //
+        return view('hechizos.edit', ['hechizo'=>$hechizo]);
     }
 
     /**
@@ -63,7 +62,15 @@ class HechizoController extends Controller
      */
     public function update(Request $request, Hechizo $hechizo)
     {
-        //
+        $hechizo->nombre = $request->nombre;
+        $hechizo->tipo1 = $request->tipo1;
+        $hechizo->tipo2 = $request->tipo2;
+        $hechizo->efecto = $request->efecto;
+        $hechizo->turnos = $request->turnos;
+        $hechizo->coste = $request->coste;
+        $hechizo->save();
+
+        return redirect()-> route('hechizos.index');
     }
 
     /**

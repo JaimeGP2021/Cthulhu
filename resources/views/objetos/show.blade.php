@@ -14,31 +14,24 @@
     @endif
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <h1 class="text-center">{{ $personaje->nombre }}</h1>
+        <h1 class="text-center text-2xl">{{ ucfirst($objeto->nombre) }}</h1>
         <table class="w-full text-sm text-left rtl:text-center text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase text-center bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        <a HREF={{ route('personajes.index') }}>Habilidades</a>
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        <a HREF={{ route('personajes.index') }}>Probabilidad</a>
                     </th>
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach ($personaje->habilidades as $habilidad)
                     <tr>
-                        <td>{{ $habilidad->nombre }}</td>
-                        <td>{{ $habilidad->pivot->probabilidad }}</td>
+                        <td>{{ $objeto->descripcion}}</td>
                     </tr>
-                @endforeach
             </tbody>
         </table>
     </div>
 
     <div class="flex justify-center mt-4 ml-10">
-        <x-primary-button><a href="{{ route('personajes.create') }}">Insertar nuevo personaje</a></x-primary-button>
+        <x-primary-button><a href="{{ route('objetos.index') }}">Volver</a></x-primary-button>
     </div>
 
 </x-app-layout>
