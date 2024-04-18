@@ -16,7 +16,7 @@
     <div class="w-[40em] mx-auto bg-white shadow-md sm:rounded-lg">
         <h2 class="text-center text-xl font-semibold mt-4">Categorías</h2>
         <ul>
-            <li class="text-center">{{ $hechizo->categorias[0]->nombre}}{{ isset($hechizo->categorias[1]) ? ', ' . $hechizo->categorias[1]->nombre : '' }}</li>
+            <li class="text-center">{{ $hechizo->categoria1->nombre}}{{ isset($hechizo->categoria2) ? ', ' . $hechizo->categoria2->nombre : '' }}</li>
         </ul>
     </div>
 

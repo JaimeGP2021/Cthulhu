@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('hechizos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->foreignId('tipo1')->constrained('categoria_hechizo', 'id');
-            $table->foreignId('tipo2')->nullable()->constrained('categoria_hechizo', 'id' );
+            $table->foreignId('tipo1')->constrained('categorias');
+            $table->foreignId('tipo2')->nullable()->constrained('categorias' );
             $table->text('efecto');
             $table->string('turnos');
             $table->string('coste');
