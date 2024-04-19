@@ -9,9 +9,8 @@ class Categoria extends Model
 {
     use HasFactory;
 
-    public function hechizos(){
-
-        return $this-> belongsToMany(Hechizo::class, 'categoria_hechizo');
-
+    public function hechizos()
+    {
+        return $this->hasMany(Hechizo::class);
     }
 }

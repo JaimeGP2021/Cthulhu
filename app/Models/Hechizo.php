@@ -8,19 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Hechizo extends Model
 {
     use HasFactory;
-    public function personajes(){
-
+    public function personajes()
+    {
         return $this->belongsToMany(Personaje::class, 'personaje_habilidad', 'personaje_id');
-
     }
 
-    public function libros(){
+    public function libros()
+    {
         return $this->belongsToMany(Libro::class, 'hechizo_libro', 'libro_id');
     }
 
-    public function categorias(){
+    public function categoria1()
+    {
+        return $this->belongsTo(Categoria::class, 'tipo1');
+    }
 
-        return $this-> belongsToMany(Categoria::class, 'categoria_hechizo');
-
+    public function categoria2()
+    {
+        return $this->belongsTo(Categoria::class, 'tipo2');
     }
 }
